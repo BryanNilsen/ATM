@@ -11,6 +11,17 @@ public class Bank {
 
     private ArrayList<Account> accounts;
 
+
+    /**
+     * Create a new Bank object with empty lists of users and accounts
+     * @param name  the name of the bank
+     */
+    public Bank(String name) {
+        this.name = name;
+        this.users = new ArrayList<User>();
+        this.accounts = new ArrayList<Account>();
+    }
+
     /**
      * Generate a new universal unique ID for a user
      * @return the uuid
@@ -112,11 +123,19 @@ public class Bank {
         //  search through list of users
         for (User u : this.users){
             // check user ID is correct
-            if (u.getUUID().compareTo(userId) == 0 && u.validatePin(pin)) {
+            if (u.getUUID().compareTo(userID) == 0 && u.validatePin(pin)) {
                 return u;
             }
         }
         // if we haven't found the user of have an incorrect pin
         return null;
+    }
+
+    /**
+     * Get the name of the bank
+     * @return  the name of the bank
+     */
+    public String getName() {
+        return this.name;
     }
 }
